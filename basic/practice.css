@@ -52,10 +52,10 @@ body {
 .topmenu-left {
   flex: none;
 }
-#apps {
+.apps {
 }
 
-#home-logo {
+.home-logo {
   width: 80px;
   height: 24px;
 }
@@ -129,7 +129,6 @@ body {
   margin-top: 56px;
 }
 
-
 .navmenu {
   width: 240px;
   min-width: 240px;
@@ -138,21 +137,21 @@ body {
   transition : all 2s linear;
   z-index : 10;
 }
-.navmenu header {
-  padding: 0px 24px;
-}
-.navmenu header a {
 
-}
 
 .navmenu::-webkit-scrollbar {
-  display:none;
+  display: none;
 }
-.navmenu .navmenu-body {
+
+.navmenu:hover::-webkit-scrollbar {
+  display: block;
+}
+
+/*.navmenu*/ .navmenu-body {
   overflow: visible;
 }
 
-.navmenu .menulist {
+/*.navmenu*/.menulist {
   white-space: nowrap;
   padding: 12px 0px;
   display: flex;
@@ -163,50 +162,50 @@ body {
 }
 
 
-.navmenu .small {
+/*.navmenu*/.small {
   padding: 8px 0px;
 }
-.navmenu .title {
+/*.navmenu*/.title {
   padding: 8px 24px;
   font-size: 1.4rem;
   font-weight: bold;
   color: #6c6c6c;
 }
-.navmenu .menulist .element {
+/*.navmenu*/.menulist .element {
   height: 40px;
   padding: 0 24px;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.navmenu .menulist .element:hover {
+/*.navmenu*/.menulist .element:hover {
   background-color: #f0f0f0;
 }
-.navmenu .menulist .element.clicked {
+/*.navmenu*/.menulist .element.clicked {
   background-color: #c0c0c0;
   font-weight: bold;
 }
-.navmenu .menulist .element .icon {
+/*.navmenu*/.menulist .element .icon {
   margin-right: 27px;
 
 }
-.navmenu .menulist .element .text {
+/*.navmenu*/.menulist .element .text {
   flex-grow: 1;
   font-size: 1.4rem;
 }
-.navmenu .menulist .element-explain {
+/*.navmenu*/.menulist .element-explain {
   padding: 0 24px;
   display: flex;
   flex-direction: column;
 
 }
-.navmenu .menulist .element-explain .explain {
+/*.navmenu*/.menulist .element-explain .explain {
   font-size: 1.4rem;
   line-height: 2.1rem;
   white-space: normal;
 
 }
-.navmenu .menulist .element-explain .button {
+/*.navmenu*/.menulist .element-explain .button {
   padding-bottom: 8px;
   padding-left: 0px;
   font-size: 1.4rem;
@@ -214,43 +213,79 @@ body {
   color: #2793e6;
 
 }
-.navmenu .footer {
+/*.navmenu*/.footer {
   padding: 12px 27px;
   width: 192px;
   display: flex;
   flex-direction: column;
 }
-.navmenu .footer * {
+/*.navmenu*/.footer * {
   font-size: 1.3rem;
   line-height: 2.1rem;
   font-weight: bold;
   color: #888888;
 }
-.navmenu .footer .element {
+/*.navmenu*/.footer .element {
   width: 168px;
   padding-top: 12px;
   display: inline-block;
   white-space: inherit;
 }
-.navmenu .footer .element a {
+/*.navmenu*/.footer .element a {
   margin-right: 8px;
   display: inline-block;
 }
 
-.navmenu .footer .last-element {
+/*.navmenu*/.footer .last-element {
   padding: 24px 27px;
   padding-left: 0px;
   padding-bottom: 0px;
 }
+
+
+#mobile {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  z-index: 100;
+}
+#navmenu-mobile {
+  background-color: #f5f5f5;
+  width: 240px;
+  min-width: 240px;
+  max-width: 240px;
+  z-index: 100;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#mobile-nav-topmenu {
+  padding: 0px 24px;
+
+}
+
+#mobile-nav-body {
+  overflow-y: scroll;
+}
+
+#mobile #mobile-body {
+  flex: 1;
+  background: #000000;
+  opacity: 0.5;
+}
+
+
+
+
+
 
 .contents {
   padding: 0px 30px;
   flex: 1;
   background-color: #fafafa;
 }
-
-
-
 
 .channel {
   padding-bottom: 30px;
@@ -266,6 +301,7 @@ body {
   vertical-align: center;
   align-items: center;
   margin: 20px 0px;
+  padding: 0px 0px;
 }
 .channel .title .small {
   white-space: nowrap;
@@ -302,15 +338,19 @@ body {
 }
 
 .channel .video-container {
-  width: 210px;
+  flex: 1;
   display: flex;
   flex-direction: row;
+  overflow: inherit;
 }
 .channel .video-container .video * {
   margin-right: 5px;
   color: #787878;
 }
+.channel .video-container .video {
+  width: 210px;
 
+}
 
 .channel .video-container .video .image {
   width: 210px;
@@ -348,9 +388,9 @@ body {
 
 /* Mobile Device */
 @media all and (max-width: 800px) {
-  .topmenu-search {
+  /*.topmenu-search {
     display: none;
-  }
+  }*/
   .navmenu {
     display: none;
   }
@@ -358,16 +398,25 @@ body {
 
   }
   .Notmobile {
+  }
+  #mobile {
     display: none;
   }
 }
 
 /* Desktop Device */
 @media all and (min-width: 800px) {
+  .topmenu-search {
+    display: block;
+  }
   #searchsample {
     display: none;
   }
   .navmenu header {
     display: none;
+  }
+  #mobile {
+    visibility: hidden;
+    opacity: 0;
   }
 }
