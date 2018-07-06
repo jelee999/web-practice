@@ -22,8 +22,27 @@ var appsClicked = function() {
   if(navmenu[0].style.display != 'none'){
     navmenu[0].style.display = 'none';
   }
-  else{
-    navmenu[0].style.display = 'block';
+  else{ //navmenu 슬라이딩
+    if(mediaquery.matches) {
+      navmenu[0].style.position = 'fixed';
+      navmenu[0].style.top = 40;
+      navmenu[0].style.display = 'block';
+      var pos = 0;
+      var id = setInterval(frame, 10);
+      if(pos == 100) {
+        clearInterval(id);
+      } else {
+        pos++;
+        navmenu[0].style.left = pos + 'px';
+      }
+    }
+    else {
+      navmenu[0].style.position = 'static';
+      navmenu[0].style.display = 'block';
+    }
+
+
+
   }
 
 };
@@ -39,3 +58,16 @@ function navmenuOver() {
 
   }
 }
+
+//돋보기 버튼 누르면 검색 창 활성화
+var searchsample = document.getElementById('searchsample');
+var searchwindow = document.getElementsByClassName('topmenu-search')[0];
+var topmenuLeft = document.getElementsByClassName('topmenu-left')[0];
+var topmenuRight = document.getElementsByClassName('topmenu-right')[0];
+var searchexpand = function() {
+  searchsample.style.display = 'none';
+  topmenuLeft.style.display = 'none';
+  topmenuRight.style.display = 'none';
+  searchwindow.style.display = 'flex';
+}
+searchsample.addEventListener('click', searchexpand, false);
